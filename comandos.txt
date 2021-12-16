@@ -1,0 +1,25 @@
+//**Creando network
+
+docker network create javapractica2
+
+
+//**instalamos mongodb en docker
+
+docker pull mongo:4.2
+
+docker run -d -p 27017:27017 --name=bsmongodb mongo:4.2
+
+docker exec -it bsmongodb bash
+
+use bsmongodb
+
+bsmongodb.Persona.insert
+	(
+		{
+			"dni" : "73987433",
+			"nombres" : "xavier",
+                        "apellidos" : "ambrocio ramirez",
+                        "estado" : 1,
+                        "fotobase64" : "12312331assd"
+		}
+	)
