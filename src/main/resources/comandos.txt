@@ -20,6 +20,6 @@ bsmongodb.Persona.insert
 			"nombres" : "xavier",
                         "apellidos" : "ambrocio ramirez",
                         "estado" : 1,
-                        "fotobase64" : "12312331assd"
+                        "fotobase64" : "aG9sYSBtdW5kbw=="
 		}
 	)
