@@ -7,13 +7,17 @@ docker network create javapractica2
 
 docker pull mongo:4.2
 
-docker run -d -p 27017:27017 --name=bsmongodb mongo:4.2
+docker run -d -p 27017:27017 --name=bsmongodb --network javapractica2 mongo:4.2
 
 docker exec -it bsmongodb bash
 
-use bsmongodb
+/** Ingresamos la palabra mongo
+mongo
 
-bsmongodb.Persona.insert
+//** ingresamos el siguiente comando para crear la bd
+use fotobd
+
+fotobd.Persona.insert
 	(
 		{
 			"dni" : "73987433",
@@ -23,3 +27,12 @@ bsmongodb.Persona.insert
                         "fotobase64" : "aG9sYSBtdW5kbw=="
 		}
 	)
+
+//Ejecutar para docker
+
+.\mvnw clean package -DskipTests
+
+docker build -t api-foto-mongodb:v1 .
+
+docker run -p 8090:8090 --name api-foto-mongodb --network javapractica2 api-foto-mongodb:v1
+
